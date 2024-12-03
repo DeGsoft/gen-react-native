@@ -9,6 +9,19 @@ const normalizedStories = [
   {
     titlePrefix: "",
     directory: "./.storybook/stories",
+    files: "**/*.mdx",
+    importPathMatcher:
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.mdx)$/,
+    // @ts-ignore
+    req: require.context(
+      "./stories",
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.mdx)$/
+    ),
+  },
+  {
+    titlePrefix: "",
+    directory: "./.storybook/stories",
     files: "**/*.stories.?(ts|tsx|js|jsx)",
     importPathMatcher:
       /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
