@@ -1,3 +1,4 @@
+import { DONE_CELL, TEXT_CELL, TITLE_VALUES, TODO_TABLE } from '@/services/database/database';
 import { useState } from 'react';
 import {
   FlatList, StyleSheet, Text, TextInput,
@@ -12,11 +13,6 @@ import {
   useSortedRowIds,
   useValue
 } from 'tinybase/ui-react';
-
-// The TinyBase table contains the todos, with 'text' and 'done' cells.
-const TODO_TABLE = 'todo';
-const TEXT_CELL = 'text';
-const DONE_CELL = 'done';
 
 // Emojis to decorate each todo.
 const NOT_DONE_ICON = String.fromCodePoint('0x1F7E0');
@@ -96,7 +92,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text style={styles.heading}>{useValue('title')}</Text>
+      <Text style={styles.heading}>{useValue(TITLE_VALUES)}</Text>
       <NewTodo />
       <Todos />
       <ClearTodos />
