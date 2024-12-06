@@ -1,6 +1,7 @@
+import { deviceLanguage } from "@/languages/languages";
 import { TITLE_VALUES, db, useAndStartPersister } from "@/services/database/database";
 import { Stack } from "expo-router";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { Provider, useCreateStore } from "tinybase/ui-react";
 
@@ -9,7 +10,6 @@ function RootLayout() {
   const store = useCreateStore(() => db);
   useAndStartPersister(store);
   store.setValue(TITLE_VALUES, 'Todo App');
-
   return (
     // Wrap the app in TinyBase context, so the store is default throughout and
     // a SafeAreaProvider/SafeAreaView so it fits the screen.
@@ -17,6 +17,7 @@ function RootLayout() {
       <SafeAreaProvider>
         <SafeAreaView style={styles.container}>
           <Stack />
+          <Text>{deviceLanguage}</Text>
         </SafeAreaView>
       </SafeAreaProvider>
     </Provider>

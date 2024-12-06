@@ -1,3 +1,4 @@
+import { getLocalizedText } from '@/languages/languages';
 import { DONE_CELL, TEXT_CELL, TITLE_VALUES, TODO_TABLE } from '@/services/database/database';
 import { useState } from 'react';
 import {
@@ -33,7 +34,7 @@ const NewTodo = () => {
       value={text}
       onChangeText={(text) => setText(text)}
       onSubmitEditing={handleSubmitEditing}
-      placeholder='What do you want to do today?'
+      placeholder={getLocalizedText('what_do_you_want_to_do_today')}
       style={styles.input}
     />
   );
