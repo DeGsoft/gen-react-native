@@ -1,5 +1,5 @@
 import { Platform } from "react-native";
-import { Store, TablesSchema, ValuesSchema, createStore } from 'tinybase';
+import { Store, TablesSchema, ValuesSchema, createIndexes, createRelationships, createStore } from 'tinybase';
 import {
     useCreatePersister
 } from 'tinybase/ui-react';
@@ -35,5 +35,7 @@ const useAndStartPersister = (store: Store) =>
 // Initialize the (memoized) TinyBase store and persist it.
 const store = createStore();
 const db = store.setSchema(tablesSchema, valuesSchema);
+const indexes = createIndexes(db);
+const relations = createRelationships(db);
 
-export { DONE_CELL, TEXT_CELL, TITLE_VALUES, TODO_TABLE, db, useAndStartPersister };
+export { DONE_CELL, TEXT_CELL, TITLE_VALUES, TODO_TABLE, db, useAndStartPersister, indexes, relations };

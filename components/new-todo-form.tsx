@@ -1,5 +1,4 @@
 import { getLocalizedText } from '@/languages/languages';
-import { DONE_CELL, TEXT_CELL, TODO_TABLE, db } from '@/services/database/database';
 import { yupResolver } from "@hookform/resolvers/yup";
 import React from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
@@ -15,11 +14,11 @@ const schema = yup
 
 type FormValues = yup.InferType<typeof schema>
 
-export const NewTodoForm: React.FC = () => {
+export const NewTodoForm: React.FC = ({ onSave }) => {
   const { ...methods } = useForm<FormValues>({ resolver: yupResolver(schema) });
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    db.setRow(TODO_TABLE, crypto.randomUUID(), { [TEXT_CELL]: data?.text, [DONE_CELL]: false });
+    onSave(data?.text);
     methods.reset();
   };
 
