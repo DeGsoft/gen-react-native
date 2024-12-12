@@ -25,6 +25,10 @@ export default function Index() {
     Todos.remove(id);
     refreshData();
   }
+  const handleClear = () => {
+    refreshData();
+  }
+
   return (
     <View
       style={{
@@ -36,7 +40,7 @@ export default function Index() {
       <Text style={styles.heading}>{useValue(TITLE_VALUES)}</Text>
       <NewTodoForm onSave={handleSave} />
       <ListTodo data={data} onRemove={handleRemove} />
-      <ClearTodos show={useHasTable(TODO_TABLE)} />
+      <ClearTodos show={useHasTable(TODO_TABLE)} onPress={handleClear} />
     </View>
   );
 }

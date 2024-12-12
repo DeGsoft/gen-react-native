@@ -1,15 +1,15 @@
 import Model from './model';
-import { indexes } from './database';
+import { TODO_TABLE, indexes } from './database';
 
 indexes.setIndexDefinition(
     'byPriority',
-    'todos',
+    TODO_TABLE,
     'priority'
 );
 
 const Todos = (() => {
     // our base functionality...
-    const baseTodos = Model('todos');
+    const baseTodos = Model(TODO_TABLE);
 
     // get all the todo ids associated with this project
     const priorities = () =>

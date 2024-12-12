@@ -11,7 +11,7 @@ const TITLE_VALUES = Object.keys(valuesSchema)[0];
 
 // The TinyBase table contains the todos, with 'text' and 'done' cells.
 const tablesSchema: TablesSchema = {
-    todo: {
+    todos: {
         text: { type: 'string' },
         done: { type: 'boolean', default: false },
     },

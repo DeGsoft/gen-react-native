@@ -2,7 +2,6 @@ import { Button, FlatList, StyleSheet, Text, View } from "react-native";
 
 // A list component to show all the todos.
 export const ListTodo = ({ data, onRemove }) => {
-    console.log('ListTodo', data)
     const renderItem = ({ item }) =>
         <View style={styles.item}>
             <Text style={styles.todoText}>{item?.text}</Text>
@@ -11,7 +10,8 @@ export const ListTodo = ({ data, onRemove }) => {
                 color="red"
                 onPress={() => onRemove(item?.id)} />
         </View>;
-    return (<View style={styles.container}>
+    return (
+    <View style={styles.container}>
         <FlatList
             data={data}
             renderItem={renderItem}
@@ -22,14 +22,18 @@ export const ListTodo = ({ data, onRemove }) => {
 };
 
 const styles = StyleSheet.create({
-    container: {},
-    todos: {
+    container: {
         flex: 1,
         marginTop: 16,
     },
+    todos: {},
     item: {
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingLeft: 10,
+        gap: 10,
+        backgroundColor: 'silver'
     },
     todoText: {
         fontSize: 20,

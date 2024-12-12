@@ -1,11 +1,11 @@
-import { relations } from './database';
+import { TODO_TABLE, relations } from './database';
 
 import Model from './model';
 import Todos from './todos.model';
 
 relations.setRelationshipDefinition(
     'projectTodos',  // the id of the relationship
-    'todos',         //  the 'many', or local side of the relation
+    TODO_TABLE,         //  the 'many', or local side of the relation
     'projects',      //  the 'one', or remote side of the relation
     'projectId'      //  the local key containing the remote id
 );
